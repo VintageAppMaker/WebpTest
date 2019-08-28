@@ -2,6 +2,10 @@
 
 > Glide를 사용하여 webp, gif animated 적용하기
 
+webp는 animation의 start, stop이 가능함 
+
+![](demo.gif)
+
 gradle 설정
 
 ~~~
