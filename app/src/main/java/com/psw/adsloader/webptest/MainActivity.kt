@@ -20,9 +20,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
-    }
 
     fun loadWithWebp(){
         GlideApp.with(this)
