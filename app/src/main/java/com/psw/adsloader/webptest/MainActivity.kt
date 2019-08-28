@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        loadWithWebp()
+        btnGif.setOnClickListener { loadWithGif() }
+        btnWebp.setOnClickListener{ loadWithWebp() }
 
     }
 
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     fun loadWithWebp(){
         GlideApp.with(this)
             .asDrawable()
-            .load("https://res.cloudinary.com/demo/image/upload/fl_awebp/bored_animation.webp")
+            .load("https://raw.githubusercontent.com/VintageAppMaker/WebpTest/master/app/src/main/assets/test.webp")
             .into(object : SimpleTarget<Drawable>() {
                 override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
                     imageView.setImageDrawable(resource)
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     fun loadWithGif(){
         GlideApp.with(this).asGif()
-            .load("https://res.cloudinary.com/demo/image/upload/bored_animation.gif")
+            .load("https://github.com/VintageAppMaker/WebpTest/blob/master/app/src/main/assets/test.gif?raw=true")
             .into(object : SimpleTarget<GifDrawable>() {
                 override fun onResourceReady(resource: GifDrawable, transition: Transition<in GifDrawable>?) {
                     imageView.setImageDrawable(resource)
