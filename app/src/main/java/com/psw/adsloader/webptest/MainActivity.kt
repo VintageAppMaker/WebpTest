@@ -20,9 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         btnGif.setOnClickListener { loadWithGif(); fn = null }
         btnWebp.setOnClickListener{
-            if (fn == null){
-                fn = loadWithWebp()
-            }
+            fn = fn ?: loadWithWebp()
             fn!!()
         }
     }
@@ -36,10 +34,10 @@ class MainActivity : AppCompatActivity() {
             if(res != null ){
                 if ( res!!.isRunning ){
                     res!!.stop()
-                    toast("stop")
+                    toast("webp stop")
                 } else {
                     res!!.start()
-                    toast("start")
+                    toast("webp start(continue)")
                 }
                 return
             }
@@ -57,6 +55,7 @@ class MainActivity : AppCompatActivity() {
                         if (resource is Animatable) {
                             res = resource
                             (resource as Animatable).start()
+                            toast("webp start(first)")
                         }
                     }
                 })
@@ -70,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onResourceReady(resource: GifDrawable, transition: Transition<in GifDrawable>?) {
                     imageView.setImageDrawable(resource)
                     resource.start()
+                    toast("gif start")
                 }
             })
     }
